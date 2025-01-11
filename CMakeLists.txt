@@ -3,7 +3,17 @@ project(OrbbecSDK VERSION 1.10.16 LANGUAGES C CXX)
 
 # Determine host platform
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/DetermineHostPlatform.cmake)
+# Include directories
+include_directories(/home/parmeet/OrbbecSDK/include/libobsensor/h)
 
+# Link directories for shared libraries
+link_directories(/home/parmeet/OrbbecSDK/lib/linux_x64)
+target_link_libraries(my_executables
+    OrbbecSDK
+    ob_usb
+    depthengine
+    live555
+)
 if(WIN32)
     set(ORBBEC_LIB_PREFIX "")
     set(ORBBEC_LIB_SUFFIX ".lib")
